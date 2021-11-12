@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Pages/Home/Home/Home';
 import './App.css'
-import Login from './Pages/Login/Login';
 import AllPotteries from './Pages/AllPotteries/AllPotteries/AllPotteries';
 import Purchase from './Pages/Purchase/Purchase';
-import Register from './Pages/Register/Register';
+import Register from './Pages/Login/Register/Register';
+import Login from './Pages/Login/Login/Login';
 
 function App() {
   return (

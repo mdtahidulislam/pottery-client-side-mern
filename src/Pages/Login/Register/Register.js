@@ -1,12 +1,22 @@
 import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Footer from '../Shared/Footer/Footer';
-import Header from '../Shared/Header/Header';
+import Footer from '../../Shared/Footer/Footer';
+import Header from '../../Shared/Header/Header';
 import { useForm } from 'react-hook-form';
+import useFirebase from '../../../Hooks/useFirebase';
+
 
 const Register = () => {
-    const { register } = useForm();
+    const { register, handleSubmit } = useForm();
+    const { createUser } = useFirebase();
+
+    // handleRegister
+    const onSubmit = (user) => {
+        createUser(user.email, user.password)
+
+    }
+
     return (
         <div>
             <Header></Header>
@@ -14,7 +24,7 @@ const Register = () => {
                 <Grid sx={{ my: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Grid item md={6} xs={12}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', textAlign: 'center', mb: '30px' }}>Please Register</Typography>
-                        <form>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <TextField
                                 type='email'
                                 {...register("email")}
