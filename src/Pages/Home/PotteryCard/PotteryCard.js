@@ -26,7 +26,7 @@ const PotteryCard = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Link to={`/purchase/${props.pottery._id}`} style={{ textDecoration: 'none' }}>
+                    <Link to={`/potteries/${props.pottery._id}`} style={{ textDecoration: 'none' }}>
                         <Button variant='contained' size="small" sx={{ fontWeight: 'bold' }}>Order</Button>
                     </Link>
                 </CardActions>
