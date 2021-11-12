@@ -1,16 +1,17 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PotteryCard = (props) => {
     const { name, description, img, price } = props.pottery;
-    return (
 
+    return (
         <Grid item lg={4} md={6} xs={12} sx={{ px: '15px' }}>
             <Card sx={{ mb: '30px', mx: 'auto' }}>
                 <CardMedia
                     component="img"
                     alt="Pottery"
-                    height="140"
+                    height="240"
                     image={img}
                 />
                 <CardContent>
@@ -25,7 +26,9 @@ const PotteryCard = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Share</Button>
+                    <Link to={`/purchase/${props.pottery._id}`} style={{ textDecoration: 'none' }}>
+                        <Button variant='contained' size="small" sx={{ fontWeight: 'bold' }}>Order</Button>
+                    </Link>
                 </CardActions>
             </Card>
         </Grid>

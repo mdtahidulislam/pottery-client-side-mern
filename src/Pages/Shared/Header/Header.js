@@ -17,6 +17,9 @@ const Header = () => {
                         <Link to='/' style={{ color: '#fff', textDecoration: 'none' }}>Pottery
                         </Link>
                     </Typography>
+                    <Link to='/allpotteries' style={{ color: '#fff', textDecoration: 'none' }}>
+                        <Button color="inherit">Potteries</Button>
+                    </Link>
                     <Link to='/login' style={{ color: '#fff', textDecoration: 'none' }}>
                         <Button color="inherit">Login</Button>
                     </Link>
