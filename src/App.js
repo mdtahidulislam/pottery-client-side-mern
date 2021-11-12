@@ -4,6 +4,7 @@ import './App.css'
 import Login from './Pages/Login/Login';
 import AllPotteries from './Pages/AllPotteries/AllPotteries/AllPotteries';
 import Purchase from './Pages/Purchase/Purchase';
+import Register from './Pages/Register/Register';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route path='/allpotteries'>
             < AllPotteries></AllPotteries>
+          </Route>
+          <Route path='/register'>
+            <Register></Register>
           </Route>
           <Route path='/login'>
             <Login></Login>

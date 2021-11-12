@@ -2,8 +2,7 @@ import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React from 'react';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
-import { useForm } from 'react-hook-form'
-import { width } from '@mui/system';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -36,7 +35,7 @@ const Login = () => {
                                 variant='contained'
                                 type='submit'
                                 style={{ width: '100%' }}
-                            >Loin</Button>
+                            >Login</Button>
                         </form>
                         <Typography>New User? <Link to='/register'>Register</Link> </Typography>
                     </Grid>
