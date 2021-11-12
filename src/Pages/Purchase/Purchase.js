@@ -35,6 +35,7 @@ const Purchase = () => {
                         <Typography variant='body3' color="text.inherit" sx={{ mb: '20px', lineHeight: '28px' }}>
                             {pottery.description}
                         </Typography>
+                        <hr />
                         <form onSubmit=''>
                             <TextField
                                 {...register("phone")}
