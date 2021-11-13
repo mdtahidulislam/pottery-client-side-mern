@@ -8,12 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
+import { useHistory } from 'react-router';
 
 const Header = () => {
     const { user, userSignOut } = useFirebase();
+    const history = useHistory();
 
     const handleLogOut = () => {
-        userSignOut();
+        userSignOut(history);
     }
 
     return (

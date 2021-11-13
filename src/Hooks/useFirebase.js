@@ -68,10 +68,10 @@ const useFirebase = () => {
     }
 
     // signout
-    const userSignOut = () => {
+    const userSignOut = (history) => {
         setIsLoding(true);
         signOut(auth).then(() => {
-            // Sign-out successful.
+            history.replace('/');
         }).catch((error) => {
             // An error happened.
         })

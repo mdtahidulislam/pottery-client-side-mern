@@ -3,7 +3,7 @@ import Home from './Pages/Home/Home/Home';
 import './App.css'
 import AllPotteries from './Pages/AllPotteries/AllPotteries/AllPotteries';
 import Purchase from './Pages/Purchase/Purchase';
-import DashBoard from './Pages/DashBoard/DashBoard';
+import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 import Register from './Pages/Login/Register/Register';
 import Login from './Pages/Login/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
