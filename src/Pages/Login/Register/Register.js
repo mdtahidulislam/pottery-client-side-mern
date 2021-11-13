@@ -1,20 +1,30 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
-import React from 'react';
+import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
+import useAuth from '../../../Hooks/useAuth';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
-import { useForm } from 'react-hook-form';
-import useFirebase from '../../../Hooks/useFirebase';
 
 
 const Register = () => {
-    const { register, handleSubmit } = useForm();
-    const { createUser } = useFirebase();
+    const [loginData, setLoginData] = useState({});
+    const history = useHistory();
+
+    const { user, authError, createUser } = useAuth();
+
+    const handleChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData }
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
+    }
 
     // handleRegister
-    const onSubmit = (user) => {
-        createUser(user.email, user.password)
-
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        createUser(loginData.email, loginData.password, loginData.name, history)
     }
 
     return (
@@ -24,22 +34,36 @@ const Register = () => {
                 <Grid sx={{ my: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <Grid item md={6} xs={12}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', textAlign: 'center', mb: '30px' }}>Please Register</Typography>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        {/* <Typography variant='h6' style={{ color: 'red' }}>{error}</Typography>
+                        {user?.email && <Alert severity="error">Successfully Created</Alert>}
+                        {authError && <Alert severity="success">{authError}</Alert>} */}
+                        <form onSubmit={handleLoginSubmit}>
+                            <TextField
+                                type='text'
+                                name='name'
+                                size='small'
+                                style={{ width: '100%', marginBottom: '20px' }}
+                                required
+                                placeholder='Enter Name'
+                                onChange={handleChange}
+                            ></TextField>
                             <TextField
                                 type='email'
-                                {...register("email")}
+                                name='email'
                                 size='small'
                                 style={{ width: '100%', marginBottom: '20px' }}
                                 required
                                 placeholder='Enter Email'
+                                onChange={handleChange}
                             ></TextField>
                             <TextField
                                 type='password'
-                                {...register("password")}
+                                name='password'
                                 size='small'
                                 style={{ width: '100%', marginBottom: '20px' }}
                                 required
                                 placeholder='Enter Password'
+                                onChange={handleChange}
                             ></TextField>
                             <Button
                                 variant='contained'

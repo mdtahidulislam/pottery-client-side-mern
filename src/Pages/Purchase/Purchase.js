@@ -1,14 +1,17 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, Container, Grid, TextField, Typography, unstable_createMuiStrictModeTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
 import { useForm } from "react-hook-form";
 import { TextareaAutosize } from '@material-ui/core';
+import useAuth from '../../Hooks/useAuth';
 
 const Purchase = () => {
     const { potId } = useParams()
     const [pottery, setPottery] = useState([]);
+    const [orderState, setOrderState] = useState(false);
+    const { user } = useAuth();
 
     useEffect(() => {
         fetch(`http://localhost:5000/potteries/${potId}`)
@@ -16,7 +19,36 @@ const Purchase = () => {
             .then(data => setPottery(data))
     }, [])
 
-    const { register } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+    const onSubmit = (data) => {
+        const newOrder = {
+            userId: user.uid,
+            userName: user.displayName,
+            userEmail: user.email,
+            userPhone: data.phone,
+            orderAddress: data.address,
+            prodId: potId,
+            prodName: pottery.name,
+            prodImg: pottery.img,
+            prodPrice: pottery.price,
+        }
+
+        fetch('http://localhost:5000/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newOrder)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    setOrderState(true);
+                }
+            })
+    }
+
+
     return (
         <div>
             <Header></Header>
@@ -36,7 +68,41 @@ const Purchase = () => {
                             {pottery.description}
                         </Typography>
                         <hr />
-                        <form onSubmit=''>
+                        <Typography variant='h6' color="text.inherit" sx={{ textAlign: 'center', mb: '10px', fontWeight: 'bold', lineHeight: '28px' }}>
+                            User Details
+                        </Typography>
+                        <Typography variant='h6' color="text.inherit" sx={{ textAlign: 'center', mb: '20px', fontSize: '14px', lineHeight: '28px' }}>
+                            User Name: {user.displayName} <br />
+                            User Email: {user.email}
+                        </Typography>
+                        <Typography variant='h6' color="text.inherit" sx={{ textAlign: 'center', mb: '10px', fontWeight: 'bold', lineHeight: '28px' }}>
+                            Fill Up form for Order
+                        </Typography>
+                        <hr />
+                        {orderState &&
+
+                            <Alert severity="success">Order placed successfully!</Alert>
+
+                        }
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <TextField
+                                {...register("name")}
+                                size='small'
+                                type='text'
+                                value={user.displayName}
+                                disabled
+                                style={{ width: '100%', marginBottom: '15px' }}
+                            >
+                            </TextField>
+                            <TextField
+                                {...register("email")}
+                                size='small'
+                                type='email'
+                                value={user.email}
+                                disabled
+                                style={{ width: '100%', marginBottom: '15px' }}
+                            >
+                            </TextField>
                             <TextField
                                 {...register("phone")}
                                 placeholder='Enter Phone Number'

@@ -7,8 +7,15 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import useFirebase from '../../../Hooks/useFirebase';
 
 const Header = () => {
+    const { user, userSignOut } = useFirebase();
+
+    const handleLogOut = () => {
+        userSignOut();
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -20,9 +27,20 @@ const Header = () => {
                     <Link to='/allpotteries' style={{ color: '#fff', textDecoration: 'none' }}>
                         <Button color="inherit">Potteries</Button>
                     </Link>
-                    <Link to='/login' style={{ color: '#fff', textDecoration: 'none' }}>
-                        <Button color="inherit">Login</Button>
-                    </Link>
+                    {
+                        user?.email ?
+                            <Box>
+                                <Link to='/dashboard' style={{ color: '#fff', textDecoration: 'none' }}>
+                                    <Button color="inherit">Dashboard</Button>
+                                </Link>
+                                {user.displayName}
+                                <Button onClick={handleLogOut} color="inherit">Logout</Button>
+                            </Box>
+                            :
+                            <Link to='/login' style={{ color: '#fff', textDecoration: 'none' }}>
+                                <Button color="inherit">Login</Button>
+                            </Link>
+                    }
                     <IconButton
                         size="large"
                         edge="start"
