@@ -81,7 +81,7 @@ const Purchase = () => {
                         <hr />
                         {orderState &&
 
-                            <Alert severity="success">Order placed successfully!</Alert>
+                            <Alert severity="success" sx={{ mb: '10px' }}>Order placed successfully!</Alert>
 
                         }
                         <form onSubmit={handleSubmit(onSubmit)}>
