@@ -46,7 +46,7 @@ function DashBoard(props) {
     };
 
     let { path, url } = useRouteMatch();
-    const { admin } = useAuth();
+    const { user, admin } = useAuth();
 
     const drawer = (
         <div>
@@ -109,8 +109,10 @@ function DashBoard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography variant="p" >
                         <Link to='/' style={{ color: '#fff', textDecoration: 'none' }}>HOME</Link>
+                        <br />
+                        Logged in as ({user.displayName})
                     </Typography>
                 </Toolbar>
             </AppBar>

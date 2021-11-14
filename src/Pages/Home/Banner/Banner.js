@@ -17,7 +17,7 @@ const Banner = () => {
                 <Typography variant="h5">
                     hot trend 2021
                 </Typography>
-                <Typography variant="h1">
+                <Typography variant="h2">
                     New Collection
                 </Typography>
                 <Link to="/" style={{ color: '#000', textDecoration: 'none' }}>
