@@ -1,4 +1,4 @@
-import { Avatar, Card, Container, Grid, Typography } from '@mui/material';
+import { Avatar, Card, Container, Grid, Rating, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 
@@ -21,14 +21,14 @@ const Rivews = () => {
                 </Box>
                 <Grid container>
                     {
-                        reviews.map(review => <Card container sx={{ width: '100%', display: 'flex', flexWrap: 'wrap', padding: '15px' }}>
+                        reviews.map(review => <Card container sx={{ width: '100%', display: 'flex', flexWrap: 'wrap', padding: '15px', mb: '15px' }}>
                             <Grid item md={1} xs={12}>
                                 <Avatar src="/broken-image.jpg" />
                             </Grid>
                             <Grid item md={11} xs={12}>
                                 <Typography variant='body2'>Review By - {review.userName}, {review.userEmail}</Typography>
                                 <Typography variant='body2'>Review: {review.review}</Typography>
-                                <Typography variant='body2'>Rating: {review.rating}</Typography>
+                                <Typography variant='body2' style={{ display: 'flex', alignItems: 'center' }}>Rating: {review.rating}, <Rating name="read-only" value={review.rating} readOnly /></Typography>
                             </Grid>
                         </Card>)
                     }

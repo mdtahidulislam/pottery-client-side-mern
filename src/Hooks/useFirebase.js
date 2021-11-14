@@ -12,6 +12,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [authError, setAuthError] = useState('');
     const [isLoding, setIsLoding] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     // const location = useLocation();
     // const history = useHistory();
@@ -52,6 +53,13 @@ const useFirebase = () => {
         // return () => unsubscribe;
     }, [])
 
+    //  get user (admin)
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user?.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
     // login user
     const userLogin = (email, password, location, history) => {
         setIsLoding(true);
@@ -81,6 +89,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         authError,
         isLoding,
         createUser,

@@ -6,12 +6,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+// import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
+// import ListItemIcon from '@mui/material/ListItemIcon';
+// import ListItemText from '@mui/material/ListItemText';
+// import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -27,6 +27,7 @@ import {
 import MyOrders from '../MyOrders/MyOrders';
 import Pay from '../Pay/Pay';
 import Review from '../Review/Review';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 import { useHistory } from 'react-router';
@@ -48,6 +49,7 @@ function DashBoard(props) {
     };
 
     let { path, url } = useRouteMatch();
+    const { admin } = useAuth();
 
     const drawer = (
         <div>
@@ -63,6 +65,13 @@ function DashBoard(props) {
                 <ListItem button >
                     <NavLink to={`${url}/pay`} style={{ width: '100%', textDecoration: 'none' }}>Pay</NavLink>
                 </ListItem>
+                {
+                    admin &&
+                    <ListItem button >
+                        <NavLink to={`${url}/makeadmin`} style={{ width: '100%', textDecoration: 'none' }}>Make Admin</NavLink>
+                    </ListItem>
+                }
+
                 <ListItem button >
                     <Button style={{ width: '100%' }} onClick={handleLogOut} color="inherit">Logout</Button>
                 </ListItem>
@@ -153,6 +162,9 @@ function DashBoard(props) {
                     </Route>
                     <Route path={`${path}/pay`}>
                         <Pay></Pay>
+                    </Route>
+                    <Route path={`${path}/makeadmin`}>
+                        <MakeAdmin></MakeAdmin>
                     </Route>
                 </Switch>
             </Box>

@@ -25,6 +25,20 @@ const Register = () => {
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         createUser(loginData.email, loginData.password, loginData.name, history)
+
+        const newUser = {
+            email: loginData.email,
+            name: loginData.name
+        }
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'Application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+
     }
 
     return (
