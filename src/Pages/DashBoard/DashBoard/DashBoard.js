@@ -31,6 +31,8 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import { Button } from '@mui/material';
 import useAuth from '../../../Hooks/useAuth';
 import { useHistory } from 'react-router';
+import AddProduct from '../AddProduct/AddProduct';
+import ManageProduct from '../ManageProduct/ManageProduct';
 
 const drawerWidth = 240;
 
@@ -67,9 +69,17 @@ function DashBoard(props) {
                 </ListItem>
                 {
                     admin &&
-                    <ListItem button >
-                        <NavLink to={`${url}/makeadmin`} style={{ width: '100%', textDecoration: 'none' }}>Make Admin</NavLink>
-                    </ListItem>
+                    <Box>
+                        <ListItem button >
+                            <NavLink to={`${url}/makeadmin`} style={{ width: '100%', textDecoration: 'none' }}>Make Admin</NavLink>
+                        </ListItem>
+                        <ListItem button >
+                            <NavLink to={`${url}/addpottery`} style={{ width: '100%', textDecoration: 'none' }}>Add Pottery</NavLink>
+                        </ListItem>
+                        <ListItem button >
+                            <NavLink to={`${url}/managepottery`} style={{ width: '100%', textDecoration: 'none' }}>Manage Pottery</NavLink>
+                        </ListItem>
+                    </Box>
                 }
 
                 <ListItem button >
@@ -165,6 +175,12 @@ function DashBoard(props) {
                     </Route>
                     <Route path={`${path}/makeadmin`}>
                         <MakeAdmin></MakeAdmin>
+                    </Route>
+                    <Route path={`${path}/addpottery`}>
+                        <AddProduct></AddProduct>
+                    </Route>
+                    <Route path={`${path}/managepottery`}>
+                        <ManageProduct></ManageProduct>
                     </Route>
                 </Switch>
             </Box>

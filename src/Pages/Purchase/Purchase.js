@@ -107,7 +107,7 @@ const Purchase = () => {
                                 {...register("phone")}
                                 placeholder='Enter Phone Number'
                                 size='small'
-                                type='phone'
+                                type='number'
                                 required
                                 style={{ width: '100%', marginBottom: '15px' }}
                             >

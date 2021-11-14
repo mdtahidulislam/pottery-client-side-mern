@@ -21,7 +21,7 @@ const Rivews = () => {
                 </Box>
                 <Grid container>
                     {
-                        reviews.map(review => <Card container sx={{ width: '100%', display: 'flex', flexWrap: 'wrap', padding: '15px', mb: '15px' }}>
+                        reviews.map(review => <Card key={review._id} container sx={{ width: '100%', display: 'flex', flexWrap: 'wrap', padding: '15px', mb: '15px' }}>
                             <Grid item md={1} xs={12}>
                                 <Avatar src="/broken-image.jpg" />
                             </Grid>
