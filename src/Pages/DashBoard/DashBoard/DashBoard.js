@@ -6,21 +6,15 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch,
     NavLink
 } from "react-router-dom";
@@ -33,6 +27,7 @@ import useAuth from '../../../Hooks/useAuth';
 import { useHistory } from 'react-router';
 import AddProduct from '../AddProduct/AddProduct';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import ManageOrder from '../ManageOrder/ManageOrder';
 
 const drawerWidth = 240;
 
@@ -79,6 +74,9 @@ function DashBoard(props) {
                         <ListItem button >
                             <NavLink to={`${url}/managepottery`} style={{ width: '100%', textDecoration: 'none' }}>Manage Pottery</NavLink>
                         </ListItem>
+                        <ListItem button >
+                            <NavLink to={`${url}/manageorders`} style={{ width: '100%', textDecoration: 'none' }}>Manage Orders</NavLink>
+                        </ListItem>
                     </Box>
                 }
 
@@ -86,16 +84,6 @@ function DashBoard(props) {
                     <Button style={{ width: '100%' }} onClick={handleLogOut} color="inherit">Logout</Button>
                 </ListItem>
             </List>
-            {/* <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List> */}
         </div>
     );
 
@@ -181,6 +169,9 @@ function DashBoard(props) {
                     </Route>
                     <Route path={`${path}/managepottery`}>
                         <ManageProduct></ManageProduct>
+                    </Route>
+                    <Route path={`${path}/manageorders`}>
+                        <ManageOrder></ManageOrder>
                     </Route>
                 </Switch>
             </Box>

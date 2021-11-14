@@ -31,6 +31,7 @@ const Purchase = () => {
             prodName: pottery.name,
             prodImg: pottery.img,
             prodPrice: pottery.price,
+            orderStatus: 'pending'
         }
 
         fetch('http://localhost:5000/orders', {
@@ -80,9 +81,7 @@ const Purchase = () => {
                         </Typography>
                         <hr />
                         {orderState &&
-
                             <Alert severity="success" sx={{ mb: '10px' }}>Order placed successfully!</Alert>
-
                         }
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <TextField
