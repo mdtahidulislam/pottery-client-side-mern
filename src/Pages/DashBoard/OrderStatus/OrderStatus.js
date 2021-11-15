@@ -16,7 +16,7 @@ const OrderStatus = ({ orderStatus, order, setSuccess }) => {
             setSuccess(false);
         }, 3000);
         order.orderStatus = changedStat;
-        fetch(`http://localhost:5000/orders/${order._id}`, {
+        fetch(`https://desolate-chamber-78666.herokuapp.com/orders/${order._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

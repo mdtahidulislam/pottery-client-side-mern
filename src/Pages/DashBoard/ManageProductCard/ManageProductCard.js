@@ -27,9 +27,7 @@ const ManageProductCard = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    {/* <Link to={`/potteries/${props.pottery._id}`} style={{ textDecoration: 'none' }}> */}
                     <Button onClick={props.delete} variant='contained' size="small" sx={{ fontWeight: 'bold' }}>DELETE</Button>
-                    {/* </Link> */}
                 </CardActions>
             </Card>
         </Grid>

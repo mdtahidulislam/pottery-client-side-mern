@@ -7,7 +7,7 @@ const ManageOrder = () => {
     console.log(orders);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allorders')
+        fetch('https://desolate-chamber-78666.herokuapp.com/allorders')
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -16,7 +16,7 @@ const ManageOrder = () => {
     const cancelOrder = id => {
         const proceed = window.confirm('Are you sure, you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://desolate-chamber-78666.herokuapp.com/orders/${id}`, {
                 method: "DELETE"
             })
                 // update ui

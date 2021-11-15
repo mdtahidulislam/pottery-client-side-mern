@@ -9,7 +9,7 @@ const MyOrders = () => {
     console.log(orders);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?userEmail=${user.email}`)
+        fetch(`https://desolate-chamber-78666.herokuapp.com/orders?userEmail=${user.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -18,7 +18,7 @@ const MyOrders = () => {
     const cancelOrder = id => {
         const proceed = window.confirm('Are you sure, you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://desolate-chamber-78666.herokuapp.com/orders/${id}`, {
                 method: "DELETE"
             })
                 // update ui

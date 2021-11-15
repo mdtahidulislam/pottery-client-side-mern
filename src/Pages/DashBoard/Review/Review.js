@@ -21,7 +21,7 @@ const Review = () => {
             review: review,
             rating: value
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://desolate-chamber-78666.herokuapp.com/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

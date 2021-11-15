@@ -7,7 +7,7 @@ const Potteries = () => {
     const [potteries, setPotteries] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/potteries')
+        fetch('https://desolate-chamber-78666.herokuapp.com/potteries')
             .then(res => res.json())
             .then(data => setPotteries(data))
     }, [])

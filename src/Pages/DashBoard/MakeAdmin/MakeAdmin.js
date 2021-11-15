@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     const handleSubmit = (e) => {
         const user = { email }
         e.preventDefault();
-        fetch('http://localhost:5000/users/admin', {
+        fetch('https://desolate-chamber-78666.herokuapp.com/users/admin', {
             method: 'PUT',
             headers: {
                 'content-type': 'Application/json'

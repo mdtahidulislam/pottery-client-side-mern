@@ -21,7 +21,7 @@ const AddProduct = () => {
             img: pottery.img,
             price: pottery.price
         }
-        fetch('http://localhost:5000/potteries', {
+        fetch('https://desolate-chamber-78666.herokuapp.com/potteries', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

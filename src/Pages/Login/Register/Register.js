@@ -31,7 +31,7 @@ const Register = () => {
             name: loginData.name
         }
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://desolate-chamber-78666.herokuapp.com/users', {
             method: 'POST',
             headers: {
                 'content-type': 'Application/json'

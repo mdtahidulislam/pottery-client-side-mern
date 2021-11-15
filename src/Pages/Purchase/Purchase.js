@@ -14,12 +14,12 @@ const Purchase = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/potteries/${potId}`)
+        fetch(`https://desolate-chamber-78666.herokuapp.com/potteries/${potId}`)
             .then(res => res.json())
             .then(data => setPottery(data))
     }, [])
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
         const newOrder = {
             userId: user.uid,
@@ -34,7 +34,7 @@ const Purchase = () => {
             orderStatus: 'pending'
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://desolate-chamber-78666.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

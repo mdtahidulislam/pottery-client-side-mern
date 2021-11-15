@@ -6,7 +6,7 @@ const ManageProduct = () => {
     const [potteries, setPotteries] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allpotteries')
+        fetch('https://desolate-chamber-78666.herokuapp.com/allpotteries')
             .then(res => res.json())
             .then(data => setPotteries(data))
     }, [])
@@ -15,7 +15,7 @@ const ManageProduct = () => {
         console.log(id);
         const proceed = window.confirm('Are you sure, you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/potteries/${id}`, {
+            fetch(`https://desolate-chamber-78666.herokuapp.com/potteries/${id}`, {
                 method: "DELETE"
             })
                 // update ui
