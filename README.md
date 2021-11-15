@@ -9,6 +9,8 @@ Pottery is the process and the products of forming vessels and other objects wit
 * Firebase authentication
 * Material UI
 * React Router 5
+* Mongodb Database
+* Heroku Server
 * User Dashboard
 * Admin Dashboard
 * Admin can manage all Products & Order
