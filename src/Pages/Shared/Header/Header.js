@@ -9,7 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 import { useHistory } from 'react-router';
-import { SwipeableDrawer } from '@mui/material';
+import { Divider, List, ListItem, SwipeableDrawer } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Header = () => {
@@ -21,6 +21,9 @@ const Header = () => {
         setOpen(true)
     }
 
+    const handleClose = () => {
+        setOpen(false)
+    }
 
     const handleLogOut = () => {
         userSignOut(history);
@@ -69,10 +72,42 @@ const Header = () => {
                         anchor='right'
                         open={open}
                         style={{width: '240px'}}
+                        onClose={handleClose}
                     >
                        <IconButton>
-                            <ChevronRightIcon></ChevronRightIcon>
-                        </IconButton> drawer
+                            <ChevronRightIcon 
+                            sx={{mr:'auto'}} 
+                            onClick={handleClose}></ChevronRightIcon>
+                        </IconButton> 
+                        {user.displayName}
+                        <Divider />
+                        <List>
+                            <ListItem sx={{py:'0'}}>
+                                <Link to='/allpotteries' style={{ textDecoration: 'none' }}>
+                                    <Button color="inherit">Potteries</Button>
+                                </Link>
+                            </ListItem>
+                            {
+                            user?.email ?
+                                <Box>
+                                    <ListItem sx={{py:'0'}}>
+                                    <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                                        <Button color="inherit">Dashboard</Button>
+                                    </Link>
+                                    
+                                    </ListItem>
+                                    <ListItem sx={{py:'0'}}>
+                                            <Button onClick={handleLogOut} color="inherit">Logout</Button>
+                                    </ListItem>
+                                </Box>
+                                :
+                                <ListItem sx={{py:'0'}}>
+                                <Link to='/login' style={{ textDecoration: 'none' }}>
+                                    <Button color="inherit">Login</Button>
+                                </Link>
+                                </ListItem>
+                            }
+                        </List>
                     </SwipeableDrawer>
                 </Toolbar>
             </AppBar>
