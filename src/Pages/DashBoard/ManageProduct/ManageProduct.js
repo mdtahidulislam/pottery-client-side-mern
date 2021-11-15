@@ -12,7 +12,6 @@ const ManageProduct = () => {
     }, [])
     // delete
     const deletePottery = (id) => {
-        console.log(id);
         const proceed = window.confirm('Are you sure, you want to delete');
         if (proceed) {
             fetch(`https://desolate-chamber-78666.herokuapp.com/potteries/${id}`, {

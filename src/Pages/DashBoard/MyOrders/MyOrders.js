@@ -6,7 +6,6 @@ import OrderCard from '../OrderCard/OrderCard';
 const MyOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
-    console.log(orders);
 
     useEffect(() => {
         fetch(`https://desolate-chamber-78666.herokuapp.com/orders?userEmail=${user.email}`)

@@ -4,7 +4,6 @@ import ManageOrderCard from '../ManageOrderCard/ManageOrderCard';
 
 const ManageOrder = () => {
     const [orders, setOrders] = useState([]);
-    console.log(orders);
 
     useEffect(() => {
         fetch('https://desolate-chamber-78666.herokuapp.com/allorders')

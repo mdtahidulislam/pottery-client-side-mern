@@ -37,26 +37,26 @@ const Header = () => {
                         <Link to='/' style={{ color: '#fff', textDecoration: 'none' }}>Pottery
                         </Link>
                     </Typography>
-                    <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                    <Link to='/allpotteries' style={{ color: '#fff', textDecoration: 'none' }}>
-                        <Button color="inherit">Potteries</Button>
-                    </Link>
-                    {
-                        user?.email ?
-                            <Box>
-                                <Link to='/dashboard' style={{ color: '#fff', textDecoration: 'none' }}>
-                                    <Button color="inherit">Dashboard</Button>
+                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                        <Link to='/allpotteries' style={{ color: '#fff', textDecoration: 'none' }}>
+                            <Button color="inherit">Potteries</Button>
+                        </Link>
+                        {
+                            user?.email ?
+                                <Box>
+                                    <Link to='/dashboard' style={{ color: '#fff', textDecoration: 'none' }}>
+                                        <Button color="inherit">Dashboard</Button>
+                                    </Link>
+                                    {user.displayName}
+                                    <Button onClick={handleLogOut} color="inherit">Logout</Button>
+                                </Box>
+                                :
+                                <Link to='/login' style={{ color: '#fff', textDecoration: 'none' }}>
+                                    <Button color="inherit">Login</Button>
                                 </Link>
-                                {user.displayName}
-                                <Button onClick={handleLogOut} color="inherit">Logout</Button>
-                            </Box>
-                            :
-                            <Link to='/login' style={{ color: '#fff', textDecoration: 'none' }}>
-                                <Button color="inherit">Login</Button>
-                            </Link>
-                    }
+                        }
                     </Box>
-                    <Box sx={{display: {xs: 'block', md: 'none'}}}>
+                    <Box sx={{ display: { xs: 'block', md: 'none' } }}>
                         <IconButton
                             size="large"
                             edge="start"
@@ -71,41 +71,41 @@ const Header = () => {
                     <SwipeableDrawer
                         anchor='right'
                         open={open}
-                        style={{width: '240px'}}
+                        style={{ width: '240px' }}
                         onClose={handleClose}
                     >
-                       <IconButton>
-                            <ChevronRightIcon 
-                            sx={{mr:'auto'}} 
-                            onClick={handleClose}></ChevronRightIcon>
-                        </IconButton> 
+                        <IconButton>
+                            <ChevronRightIcon
+                                sx={{ mr: 'auto' }}
+                                onClick={handleClose}></ChevronRightIcon>
+                        </IconButton>
                         {user.displayName}
                         <Divider />
                         <List>
-                            <ListItem sx={{py:'0'}}>
+                            <ListItem sx={{ py: '0' }}>
                                 <Link to='/allpotteries' style={{ textDecoration: 'none' }}>
                                     <Button color="inherit">Potteries</Button>
                                 </Link>
                             </ListItem>
                             {
-                            user?.email ?
-                                <Box>
-                                    <ListItem sx={{py:'0'}}>
-                                    <Link to='/dashboard' style={{ textDecoration: 'none' }}>
-                                        <Button color="inherit">Dashboard</Button>
-                                    </Link>
-                                    
-                                    </ListItem>
-                                    <ListItem sx={{py:'0'}}>
+                                user?.email ?
+                                    <Box>
+                                        <ListItem sx={{ py: '0' }}>
+                                            <Link to='/dashboard' style={{ textDecoration: 'none' }}>
+                                                <Button color="inherit">Dashboard</Button>
+                                            </Link>
+
+                                        </ListItem>
+                                        <ListItem sx={{ py: '0' }}>
                                             <Button onClick={handleLogOut} color="inherit">Logout</Button>
+                                        </ListItem>
+                                    </Box>
+                                    :
+                                    <ListItem sx={{ py: '0' }}>
+                                        <Link to='/login' style={{ textDecoration: 'none' }}>
+                                            <Button color="inherit">Login</Button>
+                                        </Link>
                                     </ListItem>
-                                </Box>
-                                :
-                                <ListItem sx={{py:'0'}}>
-                                <Link to='/login' style={{ textDecoration: 'none' }}>
-                                    <Button color="inherit">Login</Button>
-                                </Link>
-                                </ListItem>
                             }
                         </List>
                     </SwipeableDrawer>

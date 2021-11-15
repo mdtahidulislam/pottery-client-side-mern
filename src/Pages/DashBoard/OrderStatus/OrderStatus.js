@@ -7,7 +7,6 @@ import Select from '@mui/material/Select';
 const OrderStatus = ({ orderStatus, order, setSuccess }) => {
     const [status, setStatus] = React.useState(orderStatus);
 
-    console.log('active out', status);
     const handleChange = (e) => {
         const changedStat = e.target.value;
         setStatus(changedStat);

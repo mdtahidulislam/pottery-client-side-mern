@@ -8,7 +8,6 @@ const Review = () => {
     const [value, setValue] = React.useState(2);
     const [review, setReview] = useState('');
     const [reviewState, setReviewState] = useState(false);
-    console.log(value);
 
     const handleOnBlur = (e) => {
         setReview(e.target.value);
