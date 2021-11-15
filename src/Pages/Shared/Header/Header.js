@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,10 +9,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import useFirebase from '../../../Hooks/useFirebase';
 import { useHistory } from 'react-router';
+import { SwipeableDrawer } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const Header = () => {
     const { user, userSignOut } = useFirebase();
     const history = useHistory();
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true)
+    }
+
 
     const handleLogOut = () => {
         userSignOut(history);
@@ -26,6 +34,7 @@ const Header = () => {
                         <Link to='/' style={{ color: '#fff', textDecoration: 'none' }}>Pottery
                         </Link>
                     </Typography>
+                    <Box sx={{display: {xs: 'none', md: 'block'}}}>
                     <Link to='/allpotteries' style={{ color: '#fff', textDecoration: 'none' }}>
                         <Button color="inherit">Potteries</Button>
                     </Link>
@@ -43,14 +52,28 @@ const Header = () => {
                                 <Button color="inherit">Login</Button>
                             </Link>
                     }
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
+                    </Box>
+                    <Box sx={{display: {xs: 'block', md: 'none'}}}>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            onClick={handleOpen}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    </Box>
+                    {/* responsive drawer menu */}
+                    <SwipeableDrawer
+                        anchor='right'
+                        open={open}
+                        style={{width: '240px'}}
                     >
-                        <MenuIcon />
-                    </IconButton>
+                       <IconButton>
+                            <ChevronRightIcon></ChevronRightIcon>
+                        </IconButton> drawer
+                    </SwipeableDrawer>
                 </Toolbar>
             </AppBar>
         </Box>
